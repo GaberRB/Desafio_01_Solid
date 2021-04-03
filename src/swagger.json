@@ -1,0 +1,144 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Atlas",
+        "description": "Essa é uma documentação sobre a Altas API.",
+        "version": "1.0.0",
+        "contact": {
+            "email": "gabriel@gmail.com"
+        }
+    },
+    "paths": {
+        "/users":{
+            "post":{
+                "tags":["Users"],
+                "summary": "Return one users",
+                "description": "Return a user",
+                "requestBody": {
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "name":{
+                                        "type": "string"
+                                    },
+                                    "email":{
+                                        "type": "string"
+                                    }
+                                },
+                                "example":{
+                                    "name":"user name sample",
+                                    "email": "gabriel@gmail.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201":{
+                        "description": "Created has success"
+                    },
+                    "500":{
+                        "description": "Email already exists"
+                    }
+                }
+            },
+            "get":{
+                "tags":["Users"],
+                "summary": "List all users",
+                "description": "List all users",
+                "responses":{
+                   "200":{
+                       "description": "Success",
+                       "content":{
+                           "application/json":{
+                              "schema":{
+                                  "type":"object",
+                                  "properties":{
+                                      "name":{
+                                          "type":"string"
+                                      },
+                                      "email":{
+                                          "type":"string"
+                                      }
+                                  }
+                              } 
+                           }
+                       }
+                   } 
+                }
+            }
+        },
+        "/users/{user_id}":{
+            "get":{
+                "tags":["Users"],
+                "summary": "List all users",
+                "description": "List all users",
+                "responses":{
+                   "200":{
+                       "description": "Success",
+                       "content":{
+                           "application/json":{
+                              "schema":{
+                                  "type":"object",
+                                  "properties":{
+                                      "name":{
+                                          "type":"string"
+                                      },
+                                      "email":{
+                                          "type":"string"
+                                      }
+                                  }
+                              } 
+                           }
+                       }
+                   } 
+                },
+                "parameters":[
+                    {
+                        "name": "user_id",
+                        "in":"users/{user_id}",
+                        "description":"Id on user",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/users/{user_id}/admin":{
+            "patch":{
+                "tags":["Users"],
+                "summary": "List all users",
+                "description": "List all users",
+                "responses":{
+                   "200":{
+                       "description": "Success",
+                       "content":{
+                           "application/json":{
+                              "schema":{
+                                  "type":"object",
+                                  "properties":{
+                                      "name":{
+                                          "type":"string"
+                                      },
+                                      "email":{
+                                          "type":"string"
+                                      }
+                                  }
+                              } 
+                           }
+                       }
+                   } 
+                },
+                "parameters":[
+                    {
+                        "name": "user_id",
+                        "in":"users/{user_id}",
+                        "description":"Id on user",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    }
+}
